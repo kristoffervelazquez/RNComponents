@@ -3,7 +3,7 @@ import React from 'react'
 
 const Animation102Screen = () => {
     return (
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
             <View style={styles.purpuleBox}/>
         </View>
     )
@@ -12,8 +12,13 @@ const Animation102Screen = () => {
 export default Animation102Screen;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     purpuleBox: {
-        backgroundColor: '#5856D6',
+        backgroundColor: 'red',
         width: 150,
         height: 150
     }
