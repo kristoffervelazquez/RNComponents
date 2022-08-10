@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Animated, Easing, EasingFunction, EasingStatic } from 'react-native'
+import { Animated, EasingFunction } from 'react-native'
 
 
 export const useAnimation = () => {
@@ -17,7 +17,6 @@ export const useAnimation = () => {
 
     }
 
-
     const fadeOut = () => {
         Animated.timing(opacity, {
             toValue: 0,
@@ -26,8 +25,7 @@ export const useAnimation = () => {
         }).start();
     }
 
-
-    const startMovingPosition = (initPosition: number, easing?: EasingFunction, duration: number = 700 ) => {
+    const startMovingPosition = (initPosition: number, easing?: EasingFunction, duration: number = 700) => {
 
         postion.setValue(initPosition)
 
@@ -35,7 +33,7 @@ export const useAnimation = () => {
             toValue: 0,
             useNativeDriver: true,
             duration,
-            easing: easing 
+            easing: easing
         }).start()
 
     }
