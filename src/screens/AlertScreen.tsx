@@ -1,6 +1,7 @@
 import { View, Text, Alert, Button } from 'react-native'
 import React from 'react'
 import HeaderTitle from '../components/HeaderTitle'
+import prompt from 'react-native-prompt-android';
 
 const AlertScreen = () => {
 
@@ -24,10 +25,29 @@ const AlertScreen = () => {
         )
     }
 
+    const createPrompt = () => {
+        prompt(
+            'Enter password',
+            'Enter your password to claim your $1.5B in lottery winnings',
+            [
+                { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+                { text: 'OK', onPress: password => console.log('OK Pressed, password: ' + password) },
+            ],
+            {
+                type: 'secure-text',
+                cancelable: false,
+                defaultValue: 'test',
+                placeholder: 'placeholder'
+            }
+        );
+    }
+
     return (
         <View>
             <HeaderTitle title='Alert Screen' />
             <Button title='Two button alert' onPress={createButtonAlert} />
+            <Button title='Prompt' onPress={createPrompt} />
+
 
         </View>
     )
