@@ -5,7 +5,7 @@ import HeaderTitle from '../components/HeaderTitle'
 const AlertScreen = () => {
 
     const createButtonAlert = () => {
-        Alert.alert('Alerta', 'Hola mundo',
+        Alert.alert('Titulo', 'Este es el mensaje de la alerta',
             [
                 {
                     text: 'Cancel',
