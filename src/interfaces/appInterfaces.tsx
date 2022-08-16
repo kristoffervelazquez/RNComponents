@@ -1,5 +1,5 @@
 export interface MenuItem {
-    name: string
+    name: string 
     icon: string
     component: string
 }
