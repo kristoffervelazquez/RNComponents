@@ -16,7 +16,11 @@ const AlertScreen = () => {
                     text: 'OK',
                     onPress: () => console.log('OK Pressed')
                 }
-            ]
+            ],
+            {
+                cancelable: true,
+                onDismiss: () => console.log('Dissmissed')
+            }
         )
     }
 
