@@ -29,8 +29,8 @@ const TexInputScreen = () => {
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su nombre' onChangeText={(text) => { onChange(text, 'name') }} autoCorrect={false} autoCapitalize='words' keyboardType='name-phone-pad' />
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su email' onChangeText={(text) => { onChange(text, 'email') }} keyboardType='email-address' />
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su telefono' onChangeText={(text) => { onChange(text, 'phone') }} keyboardType='phone-pad' />
-                        <View>
-                            <Text>Is subscribed?</Text>
+                        <View style={stylesScreen.switchRow}>
+                            <Text style={stylesScreen.switchText}>Is subscribed?</Text>
                             <CustomSwitch isOn={formulario.isSubscribed} onChange={(value) => { onChange(value, 'isSubscribed') }} />
                         </View>
 
@@ -54,6 +54,14 @@ const stylesScreen = StyleSheet.create({
         height: 50,
         paddingHorizontal: 10,
         marginVertical: 5
-
     },
+    switchRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10
+    },
+    switchText: {
+        fontSize: 25
+    }
 })
