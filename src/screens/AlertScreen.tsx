@@ -1,7 +1,8 @@
-import { View, Text, Alert, Button } from 'react-native'
 import React from 'react'
+import { View, Alert, Button } from 'react-native'
 import HeaderTitle from '../components/HeaderTitle'
 import prompt from 'react-native-prompt-android';
+import { styles } from '../theme/appTheme';
 
 const AlertScreen = () => {
 
@@ -43,12 +44,10 @@ const AlertScreen = () => {
     }
 
     return (
-        <View>
+        <View style={styles.globalMargin}>
             <HeaderTitle title='Alert Screen' />
             <Button title='Two button alert' onPress={createButtonAlert} />
             <Button title='Prompt' onPress={createPrompt} />
-
-
         </View>
     )
 }
