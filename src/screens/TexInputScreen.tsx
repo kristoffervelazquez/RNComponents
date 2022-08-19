@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, { useState } from 'react'
 import HeaderTitle from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
@@ -22,19 +22,21 @@ const TexInputScreen = () => {
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={styles.globalMargin}>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                    <View style={styles.globalMargin}>
 
-                    <HeaderTitle title='Text Input' />
+                        <HeaderTitle title='Text Input' />
 
-                    <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su nombre' onChangeText={(text) => { onChange(text, 'name') }} autoCorrect={false} autoCapitalize='words' keyboardType='name-phone-pad' />
-                    <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su email' onChangeText={(text) => { onChange(text, 'email') }} keyboardType='email-address' />
-                    <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su telefono' onChangeText={(text) => { onChange(text, 'phone') }} keyboardType='phone-pad' />
+                        <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su nombre' onChangeText={(text) => { onChange(text, 'name') }} autoCorrect={false} autoCapitalize='words' keyboardType='name-phone-pad' />
+                        <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su email' onChangeText={(text) => { onChange(text, 'email') }} keyboardType='email-address' />
+                        <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su telefono' onChangeText={(text) => { onChange(text, 'phone') }} keyboardType='phone-pad' />
 
-                    <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
-                    <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
-                    <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
-                    <View style={{ height: 100 }} />
-                </View>
+                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
+                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
+                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
+                        <View style={{ height: 100 }} />
+                    </View>
+                </TouchableWithoutFeedback>
             </ScrollView>
 
         </KeyboardAvoidingView>
