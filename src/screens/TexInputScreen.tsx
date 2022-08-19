@@ -3,20 +3,19 @@ import React, { useState } from 'react'
 import HeaderTitle from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
 import { ScrollView } from 'react-native-gesture-handler';
+import useForm from '../hooks/useForm';
+import CustomSwitch from '../components/CustomSwitch';
 
 
 
 const TexInputScreen = () => {
 
-    const [form, setForm] = useState({
+    const { formulario, onChange } = useForm({
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        isSubscribed: false
     })
-
-    const onChange = (value: string, field: string) => {
-        setForm({ ...form, [field]: value })
-    }
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -30,10 +29,12 @@ const TexInputScreen = () => {
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su nombre' onChangeText={(text) => { onChange(text, 'name') }} autoCorrect={false} autoCapitalize='words' keyboardType='name-phone-pad' />
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su email' onChangeText={(text) => { onChange(text, 'email') }} keyboardType='email-address' />
                         <TextInput style={stylesScreen.inputStyle} placeholder='Ingrese su telefono' onChangeText={(text) => { onChange(text, 'phone') }} keyboardType='phone-pad' />
+                        <View>
+                            <Text>Is subscribed?</Text>
+                            <CustomSwitch isOn={formulario.isSubscribed} onChange={(value) => { onChange(value, 'isSubscribed') }} />
+                        </View>
 
-                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
-                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
-                        <Text style={styles.title}>{JSON.stringify(form, null, 4)}</Text>
+                        <Text style={styles.title}>{JSON.stringify(formulario, null, 4)}</Text>
                         <View style={{ height: 100 }} />
                     </View>
                 </TouchableWithoutFeedback>
