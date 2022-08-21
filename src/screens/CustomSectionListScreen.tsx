@@ -20,7 +20,7 @@ const casas: Casas[] = [
     },
     {
         casa: "Anime",
-        data: ["Kenshin", "Goku", "Saitama","Kenshin", "Goku", "Saitama","Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama",]
+        data: ["Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama", "Kenshin", "Goku", "Saitama",]
     }
 ];
 
@@ -35,17 +35,22 @@ const CustomSectionListScreen = () => {
     return (
         <View style={{ ...styles.globalMargin, flex: 1 }}>
 
-            {/* <HeaderTitle title='Flat List' /> */}
+            {/* <HeaderTitle title='Section List' /> */}
 
             <SectionList
                 sections={casas}
                 keyExtractor={(item, index) => item + index}
+                ListHeaderComponent={() => <HeaderTitle title='Section List' />}
+                ListFooterComponent={() => <HeaderTitle title={'Total de casas: ' + casas.length} />}
                 stickySectionHeadersEnabled
                 renderItem={({ item }) => <Item title={item} />}
                 renderSectionHeader={({ section }) => (
-                    <View style={{backgroundColor: 'white'}}>
+                    <View style={{ backgroundColor: 'white' }}>
                         <HeaderTitle title={section.casa} />
                     </View>
+                )}
+                renderSectionFooter={({ section }) => (
+                    <HeaderTitle title={'Total: ' + section.data.length} />
                 )}
             />
 
