@@ -22,8 +22,9 @@ const PullToRefresh = () => {
         <ScrollView
             refreshControl={
                 <RefreshControl
-                    refreshing={false}
+                    refreshing={refreshing}
                     onRefresh={onRefresh}
+                    progressViewOffset={10}
                 />
             }
         >
