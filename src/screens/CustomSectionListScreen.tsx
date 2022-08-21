@@ -2,6 +2,7 @@ import { View, SectionList, Text, StyleSheet } from 'react-native';
 import React from 'react'
 import HeaderTitle from '../components/HeaderTitle';
 import { styles } from '../theme/appTheme';
+import ItemSeparator from '../components/ItemSeparator';
 
 
 interface Casas {
@@ -40,10 +41,13 @@ const CustomSectionListScreen = () => {
             <SectionList
                 sections={casas}
                 keyExtractor={(item, index) => item + index}
+                
                 ListHeaderComponent={() => <HeaderTitle title='Section List' />}
                 ListFooterComponent={() => <HeaderTitle title={'Total de casas: ' + casas.length} />}
+                
                 stickySectionHeadersEnabled
                 renderItem={({ item }) => <Item title={item} />}
+                
                 renderSectionHeader={({ section }) => (
                     <View style={{ backgroundColor: 'white' }}>
                         <HeaderTitle title={section.casa} />
@@ -52,6 +56,9 @@ const CustomSectionListScreen = () => {
                 renderSectionFooter={({ section }) => (
                     <HeaderTitle title={'Total: ' + section.data.length} />
                 )}
+                SectionSeparatorComponent={ItemSeparator}
+                ItemSeparatorComponent={ItemSeparator}
+                showsVerticalScrollIndicator={false}
             />
 
         </View>
